@@ -193,19 +193,6 @@ static struct JSON_NODE* EatNode(PTCHAR pszBuffer, int* piPos, BOOL bIsValue)
 
 	if (pNode)
 	{
-		//PTCHAR pszComment = CaptureComments(pszBuffer, piPos);
-		//if (pszComment) {
-		//	pNode->eType = JNT_COMMENT;
-		//	pNode->pszKey  = pszComment;
-		//	////������һ���ڵ�
-		//	//struct JSON_NODE* pNextNode = EatNode(pszBuffer, piPos, FALSE);
-		//	//if (!pNextNode)
-		//	//{
-		//	//	return NULL;
-		//	//}
-		//	//pNode->pNext = pNextNode;
-
-		//}else 
 		if (EatChar(pszBuffer, piPos, TEXT('#')) || EatChar(pszBuffer, piPos, TEXT('/')))
 		{
 			//if found comment char
@@ -909,7 +896,6 @@ static void SerializeToFile(HANDLE hFile, struct JSON_NODE* pNode, int iIndent, 
 	{
 		if (pNode->pszKey) {
 			MyWriteFile(hFile, pNode->pszKey, lstrlen(pNode->pszKey), bAsUnicode);
-			//MyWriteFile(hFile, TEXT("\n"), 1, bAsUnicode);
 		}
 	}else {
 		if (pNode->pszKey)
